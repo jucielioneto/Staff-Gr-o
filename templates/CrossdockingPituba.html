@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossdocking Pituba</title>
+    <meta name="description" content="Crossdocking do Viva o Grão.">
+    <meta name="author" content="Jucielio Neto; Eliel Copque; Viva o Grão">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5B8C5A">
+
+    <link rel="icon" href="/static/img/logobarra.png" type="image/x-icon">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-image: url('/static/fundo.jpg'); /* opcional */
+            background-image: url('/static/img/pituba\ fundo.png'); /* Caminho da imagem */
+            background-size: cover;          /* cobre toda a tela */
+            background-position: center;     /* centraliza a imagem */
+            background-repeat: no-repeat;    /* impede repetição */
+            background-attachment: fixed;    /* mantém a imagem fixa ao rolar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        img.img-thumbnail {
+            width: 120px;
+            height: auto;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #5B8C5A;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button[type="submit"] {
+            background-color: #5B8C5A;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3D6B3D;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/grao.png.png" alt="logo Grão" class="img-thumbnail">
+        <h2>Pedidos - PITUBA</h2>
+
+        <form action="/processar" method="post" enctype="multipart/form-data">
+            <input type="file" name="files[]" accept=".xls,.xlsx" multiple required>
+            <button type="submit">Processar e Baixar TXT Unificado</button>
+        </form>
+
+        <div class="footer">
+            &copy; 2025 Grão de Arroz
+        </div>
+    </div>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/js/service-worker.js')
+        .then(function(registration) {
+            console.log('Service Worker registrado com sucesso:', registration.scope);
+        })
+        .catch(function(err) {
+            console.log('Falha ao registrar o Service Worker:', err);
+        });
+    }
+    </script>
+</body>
+</html>
